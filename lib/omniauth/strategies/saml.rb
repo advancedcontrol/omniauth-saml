@@ -8,6 +8,7 @@ module OmniAuth
 
       option :name_identifier_format, nil
       option :idp_sso_target_url_runtime_params, {}
+      option :info_params_map, { :email => :email, :first_name => :first_name, :last_name => :last_name, :name => :name }
 
       def request_phase
         options[:assertion_consumer_service_url] ||= callback_url
@@ -66,10 +67,10 @@ module OmniAuth
 
       info do
         {
-          :name  => @attributes[:name],
-          :email => @attributes[:email] || @attributes[:mail],
-          :first_name => @attributes[:first_name] || @attributes[:firstname] || @attributes[:firstName],
-          :last_name => @attributes[:last_name] || @attributes[:lastname] || @attributes[:lastName]
+          :name  => options[:info_params_map][:name],
+          :email => options[:info_params_map][:email],
+          :first_name => options[:info_params_map][:first_name],
+          :last_name => options[:info_params_map][:last_name]
         }
       end
 
