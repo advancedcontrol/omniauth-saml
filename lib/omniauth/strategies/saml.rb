@@ -67,10 +67,10 @@ module OmniAuth
 
       info do
         {
-          :name  => options[:info_params_map][:name],
-          :email => options[:info_params_map][:email],
-          :first_name => options[:info_params_map][:first_name],
-          :last_name => options[:info_params_map][:last_name]
+          :name  => @attributes[options[:info_params_map][:name]],
+          :email => @attributes[options[:info_params_map][:email]],
+          :first_name => @attributes[options[:info_params_map][:first_name]],
+          :last_name => @attributes[options[:info_params_map][:last_name]],
         }
       end
 
