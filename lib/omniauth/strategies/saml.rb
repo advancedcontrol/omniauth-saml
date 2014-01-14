@@ -71,6 +71,7 @@ module OmniAuth
           :email => @attributes[options[:info_params_map][:email]],
           :first_name => @attributes[options[:info_params_map][:first_name]],
           :last_name => @attributes[options[:info_params_map][:last_name]],
+          :nickname => @attributes[options[:info_params_map][:nickname]]
         }
       end
 
