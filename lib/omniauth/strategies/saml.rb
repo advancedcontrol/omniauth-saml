@@ -66,13 +66,11 @@ module OmniAuth
       uid { @name_id }
 
       info do
-        {
-          :name  => @attributes[options[:info_params_map][:name]],
-          :email => @attributes[options[:info_params_map][:email]],
-          :first_name => @attributes[options[:info_params_map][:first_name]],
-          :last_name => @attributes[options[:info_params_map][:last_name]],
-          :nickname => @attributes[options[:info_params_map][:nickname]]
-        }
+        data = {}
+        options[:info_params_map].each do |key, value|
+          data[key] = @attributes[value]
+        end
+        data
       end
 
       extra { { :raw_info => @attributes } }
