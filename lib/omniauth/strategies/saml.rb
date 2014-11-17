@@ -33,7 +33,7 @@ module OmniAuth
         response = Onelogin::Saml::Response.new(request.params['SAMLResponse'], options)
         response.settings = Onelogin::Saml::Settings.new(options)
 
-        @name_id = response.name_id
+        @name_id = response.name_id || response.attributes[options[:info_params_map][:name_id]]
         @attributes = response.attributes
 
         if @name_id.nil? || @name_id.empty?
